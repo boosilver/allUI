@@ -4,13 +4,6 @@
     <H1>LOAN BY INVOICE</H1>
   </div>
   <form (ngSubmit)="onSubmit()" ngNativeValidate>
-    <!-- {
-        "BANK" : "BANK",
-        "FORM" : "THEMALL",
-        "DOC_LOAN" : "PO",
-        "BORROWKEY" : "01",
-        "KEY" : "0"
-      } -->
 
     <div class="row">
       <div class="field-label col-md-6 mx-auto">
@@ -22,8 +15,8 @@
 
     <div class="row">
       <div class="field-label col-md-6 mx-auto">
-        <label for="FORM" class="text-muted">FORM</label>
-        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.FORM" id="FORM" name="FORM">
+        <label for="FROM" class="text-muted">FROM</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.FROM" id="FROM" name="FROM">
       </div>
     </div>
 
@@ -38,15 +31,15 @@
 
     <div class="row">
       <div class="field-label col-md-6 mx-auto">
-        <label for="KEY" class="text-muted">KEY</label>
+        <label for="KEY" class="text-muted">DOCUMENT KEY</label>
         <input type="number" class="form-control border-bottom" required [(ngModel)]="model.KEY" id="KEY" name="KEY">
       </div>
     </div>
 
     <div class="row">
       <div class="field-label col-md-6 mx-auto">
-        <label for="BORROWKEY" class="text-muted">BORROWKEY</label>
-        <input type="number" class="form-control " [(ngModel)]="model.BORROWKEY" id="BORROWKEY" name="BORROWKEY" required>
+        <label for="LOAN_KEY" class="text-muted">LOAN KEY</label>
+        <input type="number" class="form-control " [(ngModel)]="model.LOAN_KEY" id="LOAN_KEY" name="LOAN_KEY" required>
       </div>
     </div>
 
@@ -56,10 +49,26 @@
     <!-- ----------------------------------SUBMIT-------------------------------------- -->
     <div class="row">
       <div class="center">
-        <button type="submit" class="w3-btn w3-grey w3-border w3-border-green w3-text-white w3-round-xlarge"
-          style="text-shadow:1px 1px 0 #444">SUBMIT</button>
+        <button type="button" class="w3-btn w3-grey w3-border w3-border-green w3-text-white w3-round-xlarge"
+          (click)="openModal(template)" style="text-shadow:1px 1px 0 #444">SUBMIT</button>
       </div>
     </div>
+
+    <ng-template #template>
+      <div class="modal-body text-center">
+    <pre class="card card-block card-header">
+      <p>BANK :{{this.model.BANK}}</p>
+      <p>FROM :{{this.model.FROM}}</p>
+      <p>DOCUMENT LOAN :{{this.model.DOC_LOAN}}</p>
+      <p>DOCUMENT KEY :{{this.model.KEY}}</p>
+      <p>LOAN KEY :{{this.model.LOAN_KEY}}</p>
+    </pre>
+        <p>Do you want to confirm?</p>
+
+        <button type="submit" class="btn btn-default" (click)="confirm()">Yes</button>
+        <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+      </div>
+    </ng-template>
     <!-- ------------------------------------------------------------------------------ -->
 
 

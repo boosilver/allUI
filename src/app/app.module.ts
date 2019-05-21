@@ -8,6 +8,7 @@ import { HttpModule, RequestOptions } from '@angular/http';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
 
 import { LoadingModule } from 'ngx-loading';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 //------- Service --------
 import { PROCURETOPAYService } from './service/procuretopay.service';
@@ -52,7 +53,9 @@ import { AcceptComponent } from './accept/accept.component';
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(AppRoutes),
-    LoadingModule
+    LoadingModule,
+    ModalModule.forRoot()
+
   ],
   providers: [PROCURETOPAYService, IDFProxyService],
   bootstrap: [AppComponent]

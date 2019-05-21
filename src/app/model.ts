@@ -31,7 +31,7 @@ export class TransactionCreatePurchaseOrder {
     const sample: TransactionCreatePurchaseOrder = TransactionCreatePurchaseOrder.empty();
 
     sample.TO = 'lotus';
-    sample.FORM = 'themall';
+    sample.FROM = 'themall';
     sample.PO_KEY = '002';
     sample.VALUE = '250';
 
@@ -40,7 +40,7 @@ export class TransactionCreatePurchaseOrder {
 
   constructor(
     public TO: string,
-    public FORM: string,
+    public FROM: string,
     public PO_KEY: string,
     public VALUE: string,
   ) { }
@@ -58,7 +58,7 @@ export class TransactionCreateInvoice {
     const sample: TransactionCreateInvoice = TransactionCreateInvoice.empty();
 
     sample.TO = 'themall';
-    sample.FORM = 'lotus';
+    sample.FROM = 'lotus';
     sample.INVOICE_KEY = '004';
     sample.PO_KEY = '000';
     sample.VALUE = '200';
@@ -69,7 +69,7 @@ export class TransactionCreateInvoice {
 
   constructor(
     public TO: string,
-    public FORM: string,
+    public FROM: string,
     public INVOICE_KEY: string,
     public VALUE: string,
     public PO_KEY: string,
@@ -165,20 +165,20 @@ export class Loanbyinv {
     const sample: Loanbyinv = Loanbyinv.empty();
 
     sample.BANK = 'bank';
-    sample.FORM = 'themall';
+    sample.FROM = 'lotus';
     sample.DOC_LOAN = 'PO';
     sample.KEY = '000';
-    sample.BORROWKEY = '21';
+    sample.LOAN_KEY = '00';
 
     return sample;
   }
 
   constructor(
     public BANK: string,
-    public FORM: string,
+    public FROM: string,
     public DOC_LOAN: string,
     public KEY: string,
-    public BORROWKEY: string,
+    public LOAN_KEY: string,
 
   ) { }
 }
@@ -187,7 +187,7 @@ export class Loanbyinv {
 // ----------------------------------------- Request verify invoice ---------------------------------------------------------
 export class Reqverinv {
   static empty(): Reqverinv {
-    const emptyObj = empty(Reqverinv, 4);
+    const emptyObj = empty(Reqverinv, 5);
     return emptyObj;
   }
 
@@ -196,8 +196,9 @@ export class Reqverinv {
 
     sample.TO = 'lotus';
     sample.BANK = 'bank';
-    sample.DOC_LOAN = 'PO';
-    sample.BORROWKEY = '22';
+    sample.DOC_LOAN = 'invoice';
+    sample.KEY = '123';
+    sample.LOAN_KEY = '00';
 
     return sample;
   }
@@ -206,7 +207,8 @@ export class Reqverinv {
     public TO: string,
     public BANK: string,
     public DOC_LOAN: string,
-    public BORROWKEY: string,
+    public KEY: string,
+    public LOAN_KEY: string,
 
   ) { }
 }
@@ -225,9 +227,9 @@ export class TransactionEndorseInvoice {
 
     sample.TO = 'themall';
     sample.BANK = 'bank';
-    sample.DOC_LOAN = 'PO';
-    sample.KEY = '000';
-    sample.PRICE_BORROW = '200';
+    sample.DOC_LOAN = 'invoice';
+    sample.LOAN_KEY = '00';
+    sample.PRICE_LOAN = '40';
 
     return sample;
   }
@@ -236,8 +238,8 @@ export class TransactionEndorseInvoice {
     public TO: string,
     public BANK: string,
     public DOC_LOAN: string,
-    public KEY: string,
-    public PRICE_BORROW: string,
+    public LOAN_KEY: string,
+    public PRICE_LOAN: string,
   ) { }
 }
 // ------------------------------------------------- END ---------------------------------------------------------
@@ -253,9 +255,9 @@ export class Acceptendorse {
     const sample: Acceptendorse = Acceptendorse.empty();
 
     sample.BANK = 'bank';
-    sample.FORM = 'themall';
-    sample.DOC_LOAN = 'PO';
-    sample.KEY = '000';
+    sample.FORM = 'lotus';
+    sample.DOC_LOAN = 'invoice';
+    sample.LOAN_KEY = '00';
 
     return sample;
   }
@@ -265,7 +267,7 @@ export class Acceptendorse {
     public BANK: string,
     public FORM: string,
     public DOC_LOAN: string,
-    public KEY: string,
+    public LOAN_KEY: string,
 
   ) { }
 }

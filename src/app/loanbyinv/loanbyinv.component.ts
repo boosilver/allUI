@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Loanbyinv } from '.././model';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
 
 @Component({
   selector: 'app-loanbyinv',
@@ -10,8 +12,13 @@ import { PROCURETOPAYService } from '../service/procuretopay.service';
 export class LoanbyinvComponent implements OnInit {
   model: Loanbyinv = Loanbyinv.empty();
   public loading = false;
+  modalRef: BsModalRef;
+  bsModalRef: BsModalRef;
+  message: string;
+
 
   constructor(
+    private modalService: BsModalService,
     private svc: PROCURETOPAYService
   ) { }
 
@@ -20,12 +27,15 @@ export class LoanbyinvComponent implements OnInit {
         // setTimeout(function(){
             that.model = Loanbyinv.sampleSubmitSr();
   }
+  openModal(template: LoanbyinvComponent) {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  }
 
-  onSubmit() {
+  confirm(): void {
     this.model.BANK=this.model.BANK.trim();
-    this.model.FORM=this.model.FORM.trim();
+    this.model.FROM=this.model.FROM.trim();
     this.model.DOC_LOAN=this.model.DOC_LOAN.trim();
-    this.model.BORROWKEY=this.model.BORROWKEY.trim();
+    this.model.LOAN_KEY=this.model.LOAN_KEY.trim();
     this.model.KEY=this.model.KEY.trim();
     
     console.log('Loanbyinv DATA');
@@ -52,5 +62,12 @@ export class LoanbyinvComponent implements OnInit {
                 document.getElementById("statusfield").style.display = "block";
                 
             });
+    this.message = 'Confirmed!';
+    this.modalRef.hide();
+  }
+
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef.hide();
   }
 }

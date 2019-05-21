@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TransactionCreateInvoice } from '.././model';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 
 @Component({
@@ -12,10 +13,13 @@ import { PROCURETOPAYService } from '../service/procuretopay.service';
 export class InvoiceComponent implements OnInit {
   model: TransactionCreateInvoice = TransactionCreateInvoice.empty();
   public loading = false;
-
+  modalRef: BsModalRef;
+  bsModalRef: BsModalRef;
+  message: string;
   
   constructor(
-    private svc: PROCURETOPAYService
+    private modalService: BsModalService,
+    private svc: PROCURETOPAYService,
   ) { }
 
   ngOnInit() {
@@ -24,9 +28,13 @@ export class InvoiceComponent implements OnInit {
             that.model = TransactionCreateInvoice.sampleSubmitSr();
   }
 
-  onSubmit() {
+  openModal(template: InvoiceComponent) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+  }
+
+  confirm(): void {
     this.model.TO=this.model.TO.trim();
-    this.model.FORM=this.model.FORM.trim();
+    this.model.FROM=this.model.FROM.trim();
     this.model.INVOICE_KEY=this.model.INVOICE_KEY.trim();
     this.model.PO_KEY=this.model.PO_KEY.trim();
     this.model.VALUE=this.model.VALUE.trim();
@@ -56,5 +64,12 @@ export class InvoiceComponent implements OnInit {
                 document.getElementById("statusfield").style.display = "block";
                 
             });
+    this.message = 'Confirmed!';
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef.hide();
   }
 }

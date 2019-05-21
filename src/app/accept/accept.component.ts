@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Acceptendorse } from '.././model';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-accept',
@@ -10,9 +11,13 @@ import { PROCURETOPAYService } from '../service/procuretopay.service';
 export class AcceptComponent implements OnInit {
   model: Acceptendorse = Acceptendorse.empty();
   public loading = false;
+  modalRef: BsModalRef;
+  bsModalRef: BsModalRef;
+  message: string;
 
   constructor(
     private svc: PROCURETOPAYService,
+    private modalService: BsModalService,
 
   ) { }
 
@@ -22,11 +27,14 @@ export class AcceptComponent implements OnInit {
         that.model = Acceptendorse.sampleSubmitSr();
   }
 
-  onSubmit() {
+  openModal(template: AcceptComponent) {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  }
+  confirm(): void {
     this.model.BANK=this.model.BANK.trim();
     this.model.FORM=this.model.FORM.trim();
     this.model.DOC_LOAN=this.model.DOC_LOAN.trim();
-    this.model.KEY=this.model.KEY.trim();
+    this.model.LOAN_KEY=this.model.LOAN_KEY.trim();
    
     console.log('Endorse DATA');
     console.log('saving draft ' + JSON.stringify(this.model));
@@ -50,5 +58,12 @@ export class AcceptComponent implements OnInit {
                   document.getElementById("statusfield").style.display = "block";
                   
               });
+    this.message = 'Confirmed!';
+    this.modalRef.hide();
+  }
+
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef.hide();
   }
 }
