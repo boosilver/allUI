@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TransactionEndorseInvoice } from '.././model';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import {Util} from '../../util/util'
 
 @Component({
   selector: 'app-endorse',
@@ -36,8 +37,8 @@ export class EndorseComponent implements OnInit {
     this.model.TO = this.model.TO.trim();
     this.model.BANK = this.model.BANK.trim();
     this.model.DOC_LOAN = this.model.DOC_LOAN.trim();
-    this.model.LOAN_KEY = this.model.LOAN_KEY.trim();
-    this.model.PRICE_LOAN = this.model.PRICE_LOAN.trim();
+    this.model.LOAN_KEY = Util.pad(Number(this.model.LOAN_KEY));
+    this.model.PRICE_LOAN = Util.pad(Number(this.model.PRICE_LOAN));
 
     console.log('Endorse DATA');
     console.log('saving draft ' + JSON.stringify(this.model));

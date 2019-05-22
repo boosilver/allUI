@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { TransactionCreateInvoice } from '.././model';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import {Util} from '../../util/util'
 
 
 @Component({
@@ -35,9 +36,9 @@ export class InvoiceComponent implements OnInit {
   confirm(): void {
     this.model.TO=this.model.TO.trim();
     this.model.FROM=this.model.FROM.trim();
-    this.model.INVOICE_KEY=this.model.INVOICE_KEY.trim();
-    this.model.PO_KEY=this.model.PO_KEY.trim();
-    this.model.VALUE=this.model.VALUE.trim();
+    this.model.INVOICE_KEY = Util.pad(Number(this.model.INVOICE_KEY));
+    this.model.PO_KEY = Util.pad(Number(this.model.PO_KEY));
+    this.model.VALUE = Util.pad(Number(this.model.VALUE));
 
     
     console.log('INVOICE DATA');

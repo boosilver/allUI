@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { TransactionCreatePurchaseOrder } from '.././model';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
+import {Util} from '../../util/util'
 
 @Component({
   selector: 'app-purchase-order',
@@ -35,8 +35,10 @@ export class PurchaseOrderComponent implements OnInit {
   confirm(): void {
     this.model.TO = this.model.TO.trim();
     this.model.FROM = this.model.FROM.trim();
-    this.model.PO_KEY = this.model.PO_KEY.trim();
-    this.model.VALUE = this.model.VALUE.trim();
+    // this.model.VALUE = this.model.VALUE.trim();
+    // this.model.PO_KEY = this.model.PO_KEY.trim(); เป็น number ไม่ต้องใช้ trim
+    this.model.PO_KEY = Util.pad(Number(this.model.PO_KEY));
+    this.model.VALUE = Util.pad(Number(this.model.VALUE));
 
     console.log('PO DATA');
     console.log('saving draft ' + JSON.stringify(this.model));

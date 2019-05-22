@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Loanbyinv } from '.././model';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import {Util} from '../../util/util'
 
 
 @Component({
@@ -35,8 +36,8 @@ export class LoanbyinvComponent implements OnInit {
     this.model.BANK=this.model.BANK.trim();
     this.model.FROM=this.model.FROM.trim();
     this.model.DOC_LOAN=this.model.DOC_LOAN.trim();
-    this.model.LOAN_KEY=this.model.LOAN_KEY.trim();
-    this.model.KEY=this.model.KEY.trim();
+    this.model.KEY = Util.pad(Number(this.model.KEY));
+    this.model.LOAN_KEY = Util.pad(Number(this.model.LOAN_KEY));
     
     console.log('Loanbyinv DATA');
     console.log('saving draft ' + JSON.stringify(this.model));

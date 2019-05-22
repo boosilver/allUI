@@ -221,9 +221,9 @@ body {
   }
 
   section{
-    /* height:auto;
-    min-height:100vh; */
-    background:url(./images/hongmei-zhao-294213-unsplash.jpg);
-    /* background-size:cover;
-    background-position:center; */
+    height:auto;
+    min-height:100vh;
+    background:url(./images/eberhard-grossgasteiger-1607722-unsplash.jpg);
+    background-size:cover;
+    background-position:center;
   }
