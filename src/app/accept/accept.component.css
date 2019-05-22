@@ -49,7 +49,7 @@ element.style {
     color: #ffffff!important;
 }
 h1{
-    color:#ffffff;
+    color:#000000;
     font-weight: bold;
 }
 input[type=number]::-webkit-inner-spin-button, /*Chorme*/

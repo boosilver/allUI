@@ -150,7 +150,7 @@ export class PROCURETOPAYService {
 
   // --------------------------------------------- Check PO key -----------------------------------------------------------
   InquirePOByKeyFields(model: InquirePOByKeyFields): Observable<any> {
-    const url = environment.backendBaseUrl + 'CheckPO';//asset.service.request
+    const url = environment.backendseller + 'GetPO';//asset.service.request
     let headers = new Headers();
     this.createAuthorizationHeader(headers);
     return this.http.post(url, model, {

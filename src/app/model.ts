@@ -116,15 +116,18 @@ export class InquirePOByKeyFields {
   static sampleSubmitSr(): InquirePOByKeyFields {
     const sample: InquirePOByKeyFields = InquirePOByKeyFields.empty();
 
-    sample.KEY = '';
-    sample.FORM = '';
+    sample.USER = 'lotus';
+    sample.KEY = '004';
+    sample.TYPE = 'PO';
 
     return sample;
   }
 
   constructor(
+    public USER: string,
     public KEY: string,
-    public FORM: string,
+    public TYPE: string,
+
   ) { }
 }
 //  ---------------------------------------------- END key -----------------------------------------------------------

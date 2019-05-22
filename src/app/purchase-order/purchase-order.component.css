@@ -52,8 +52,13 @@ element.style {
     color: #ffffff!important;
 }
 h1{
-    color:#ffffff;
+    color: black;
+  /* -webkit-text-fill-color: white; 
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black; */
+    /* color:#ffffff; */
     font-weight: bold;
+    /* text-shadow: 2px 2px #000; */
 }
 input[type=number]::-webkit-inner-spin-button, /*Chorme*/
 input[type=number]::-webkit-outer-spin-button { 
@@ -64,6 +69,7 @@ input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
 #boss{
+    
     /* background-color: rgb(42, 42, 42);
     margin-left:15%;
     margin-right:15%;

@@ -1,31 +1,52 @@
-                                              <div class="container">
+<div class="container">
   <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
   <div class="form-group row">
-    <H1>INQUIRE PURCHASE ORDER</H1>
+    <H1>INQUIRE DATA</H1>
   </div>
   <form (ngSubmit)="onSubmit()" ngNativeValidate>
 
     <div class="form-group row">
-      <label for="PO_ID" class="col-1 col-form-label text-right font-weight-bold">
-        No.
+      <label for="USER" class="col-1 col-form-label text-right font-weight-bold">
+        USER
       </label>
       <div class="col-2">
-        <input type="text" class="form-control" [(ngModel)]="model.PO_ID" name="PO_ID" id="PO_ID" required>
+        <input type="text" class="form-control" [(ngModel)]="model.USER" name="USER" id="USER" required>
       </div>
 
-
-
-      <label for="BUYER" class="col-2 col-form-label text-right font-weight-bold">
-         BUYER ID
+      <label for="KEY" class="col-2 col-form-label text-right font-weight-bold">
+        KEY
       </label>
       <div class="col-2">
-        <input type="text" class="form-control " [(ngModel)]="model.BUYER" name="BUYER" id="BUYER" required>
+        <input type="number" class="form-control " [(ngModel)]="model.KEY" name="KEY" id="KEY" required>
       </div>
-      <div class="form-group row                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    float-lg-right">
-        <div class="offset-3 ">
-          <button type="submit" class="w3-btn w3-grey w3-border w3-border-green w3-text-white w3-round-xlarge" style="text-shadow:1px 1px 0 #444">SUBMIT</button>
+
+          <label for="TYPE" class="col-2 col-form-label text-right font-weight-bold">
+            TYPE
+          </label>
+      <div ng-controller="ExampleController">
+
+          <select class="boss" name="TYPE" [(ngModel)]="model.TYPE" name="TYPE" id="TYPE">
+            <option value="PO">Purchase Order</option>
+            <option value="INVOICE">Invoice</option>
+          </select>
+        </div>
+      
+      <!-- <label for="TYPE" class="col-2 col-form-label text-right font-weight-bold">
+        TYPE
+      </label>
+      <div class="col-2">
+        <input type="text" class="form-control " [(ngModel)]="model.TYPE" name="TYPE" id="TYPE" required>
+      </div> -->
+
+      <div
+        class="form-group row float-lg-right">
+        <div class="offset-2 ">
+          <button type="submit" class="w3-btn w3-grey w3-border w3-border-green w3-text-white w3-round-xlarge"
+            style="text-shadow:1px 1px 0 #444; margin-left: 15px;">SUBMIT</button>
         </div>
       </div>
+
+
     </div>
   </form>
 </div>
@@ -54,38 +75,28 @@
     </div>
   </div>
   <br> -->
- 
+
   <ul class="list-group ">
-    <li class="list-group-item active" style="background-color: coral; border: coral; ">Purchase Order</li>
+    <li class="list-group-item active" style="background-color: coral; border: coral; ">DATA</li>
     <li class="list-group-item text-concat" *ngFor="let responseValue1 of responseValue">
-      <font class="font">Purchase order Identity : </font>{{ responseValue1.PO_ID }}
-      <br>
       <font class="font">Date : </font>{{ responseValue1.DATE }}
       <br>
-      <font class="font">Buyer : </font>{{ responseValue1.BUYER }}
+      <font class="font">TO : </font>{{ responseValue1.TO }}
       <br>
-      <font class="font">Product : </font>{{ responseValue1.PRODUCT }} 
+      <font class="font">FROM : </font>{{ responseValue1.FROM }}
       <br>
-      <font class="font">Price Amount : </font>{{ responseValue1.PRICE }} THB
+      <font class="font">TYPE : </font>{{ responseValue1.TYPE }}
       <br>
-      <font class="font">Seller :</font>{{ responseValue1.SELLER }}
-      <br> 
-      <font class="font">Number of Product :</font>{{ responseValue1.NUM_PRODUCT }}
-      <br> 
-      <font class="font">LOT :</font>{{ responseValue1.LOT }}
-      <br> 
-      <font class="font">Status :</font>{{ responseValue1.STATUS }} ...
-      <br> 
-      <font class="font">Finance Status :</font>{{ responseValue1.FINANCIAL_STATUS }}
-      <br> 
-      <font class="font">All Invoice  :</font>{{ responseValue1.ALL_INVOICE }}
-      <br> 
+      <font class="font">SALT :</font>{{ responseValue1.SALT }}
+      <br>
+
     </li>
 
     <!-- <li class="list-group-item active" style="background-color: rgb(58, 58, 58); border: rgb(58, 58, 58); ">ENDORSEMENT</li> -->
     <li class="list-group-item text-concat" *ngFor="let responseValue2 of responseValueEN">
       <ul class="list-group-flush">
-        <li class="list-group-item active" style="background-color: rgb(58, 58, 58); border: rgb(58, 58, 58); ">ENDORSEMENT</li>
+        <li class="list-group-item active" style="background-color: rgb(58, 58, 58); border: rgb(58, 58, 58); ">
+          ENDORSEMENT</li>
         <li class="list-group-item  ">
           <font class="font">Identity : </font>
           <br>{{ responseValue2.EndorsementIdentity }}
@@ -102,12 +113,13 @@
           <br> {{ responseValue2.FinanceIdentity }}
         </li>
 
-        
+
         <ul class="list-group-flush">
 
           <li class="list-group-item  " *ngFor="let responseValue3 of responseValue2.FinanceList">
             <ul class="list-group-flush">
-              <li class="list-group-item active " style="background-color: rgb(216, 42, 88); border:  rgb(216, 42, 88); ">FINANCE</li>
+              <li class="list-group-item active "
+                style="background-color: rgb(216, 42, 88); border:  rgb(216, 42, 88); ">FINANCE</li>
               <li class="list-group-item  ">
                 <font class="font">Identity :</font>
                 <br>{{ responseValue3.FinanceIdentity}}
@@ -132,7 +144,7 @@
   </ul>
   <pre>
 
-        PO_JSON{{ jasontree | json }}
+        DATA_JSON{{ jasontree | json }}
         
       </pre>
 
@@ -146,8 +158,8 @@
       Massage
     </label>
     <div class="col-12">
-      <input type="text" class="form-control border-bottom " name="erMass" id="erMass" value="0" style="border:none; text-align: center;font-weight: bold;"
-        readonly>
+      <input type="text" class="form-control border-bottom " name="erMass" id="erMass" value="0"
+        style="border:none; text-align: center;font-weight: bold;" readonly>
     </div>
   </div>
 </div>

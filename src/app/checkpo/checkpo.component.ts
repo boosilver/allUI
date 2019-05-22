@@ -47,12 +47,8 @@ export class CheckpoComponent implements OnInit {
 
   onSubmit(){
     
-    //  console.log('this.model : ');      
-   
-    // let data = f.value;
-    // let inv_no = `${encodeURIComponent(f.value.inv_no)}/`;
-    // let DATE = `${f.value.DATE}/`;
-    // let inv_tax_seller = f.value.inv_tax_seller;
+    //  console.log('this.model : ');
+    console.log('saving draft ' + JSON.stringify(this.model));
     this.loading = true;
    
     this.svc.InquirePOByKeyFields(this.model)
@@ -63,17 +59,11 @@ export class CheckpoComponent implements OnInit {
       this.responseValue = []; //new Array(result[0].INVOICE)
       let body ={
         "DATE": result.PO.DATE,
-        "PO_ID": result.PO.PO_ID,
-        "BUYER": result.PO.BUYER,
-        "PRODUCT": (result.PO.PRODUCT),
-        "PRICE": (result.PO.PRICE),
-        "SELLER": result.PO.SELLER,
-        "NUM_PRODUCT": result.PO.NUM_PRODUCT,
-        "LOT": result.PO.LOT,
-        "STATUS": result.PO.STATUS,
-        "FINANCIAL_STATUS": result.PO.FINANCIAL_STATUS,
-        "ALL_INVOICE": result.PO.ALL_INVOICE,
-
+        "TO": result.PO.TO,
+        "FROM": (result.PO.FROM),
+        "TYPE": (result.PO.TYPE),
+        "SALT": result.PO.SALT,
+        
       }
       this.responseValue.push(body); 
             
