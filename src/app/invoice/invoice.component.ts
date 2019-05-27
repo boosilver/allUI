@@ -35,9 +35,9 @@ export class InvoiceComponent implements OnInit {
 
   confirm(): void {
     this.model.TO=this.model.TO.trim();
-    this.model.FROM=this.model.FROM.trim();
-    this.model.INVOICE_KEY = Util.pad(Number(this.model.INVOICE_KEY));
     this.model.PO_KEY = Util.pad(Number(this.model.PO_KEY));
+    this.model.PRODUCT=this.model.PRODUCT.trim();
+    this.model.NUM_PRODUCT = Util.pad(Number(this.model.NUM_PRODUCT));
     this.model.VALUE = Util.pad(Number(this.model.VALUE));
 
     

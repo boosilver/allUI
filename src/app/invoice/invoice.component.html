@@ -14,26 +14,27 @@
 
     <div class="row">
       <div class="field-label col-md-6 mx-auto">
-        <label for="FROM" class="text-muted">FROM</label>
-        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.FROM" id="FROM" name="FROM">
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="field-label col-md-6 mx-auto">
-        <label for="INVOICE_KEY" class="text-muted">INVOICE KEY</label>
-        <input type="number" class="form-control " [(ngModel)]="model.INVOICE_KEY" id="INVOICE_KEY" name="INVOICE_KEY"
-          required>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="field-label col-md-6 mx-auto">
         <label for="PO_KEY" class="text-muted">PURCHASE ORDER KEY</label>
         <input type="number" class="form-control border-bottom" required [(ngModel)]="model.PO_KEY" id="PO_KEY"
           name="PO_KEY">
       </div>
     </div>
+    
+    <div class="row">
+      <div class="field-label col-md-6 mx-auto">
+        <label for="PRODUCT" class="text-muted">PRODUCT</label>
+        <input type="text" class="form-control border-bottom" required [(ngModel)]="model.PRODUCT" id="PRODUCT" name="PRODUCT">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="field-label col-md-6 mx-auto">
+        <label for="NUM_PRODUCT" class="text-muted">INVOICE KEY</label>
+        <input type="number" class="form-control " [(ngModel)]="model.NUM_PRODUCT" id="NUM_PRODUCT" name="NUM_PRODUCT"
+          required>
+      </div>
+    </div>
+
 
     <div class="row">
       <div class="field-label col-md-6 mx-auto">
@@ -57,9 +58,9 @@
       <div class="modal-body text-center">
         <pre class="card card-block card-header">
       <p>TO :{{this.model.TO}}</p>
-      <p>FROM :{{this.model.FROM}}</p>
+      <p>PRODUCT :{{this.model.PRODUCT}}</p>
       <p>PURCHASE ORDER ID :{{this.model.PO_KEY}}</p>
-      <p>INVOICE KEY :{{this.model.INVOICE_KEY}}</p>
+      <p>NUMBER OF PRODUCT :{{this.model.NUM_PRODUCT}}</p>
       <p>VALUE :{{this.model.VALUE}}</p>
     </pre>
         <p>Do you want to confirm?</p>

@@ -1,5 +1,5 @@
 .center{margin:auto;}
-.text-muted{font-weight: bold ; font-size:20px;}
+.field-label{font-weight: bold ; font-size:20px;}
 
 element.style {
     text-shadow: 1px 1px 0 #444;
@@ -47,4 +47,19 @@ element.style {
 }
 .w3-text-white, .w3-hover-text-white:hover {
     color: #ffffff!important;
+}
+h1{
+    color:#000000;
+    font-weight: bold;
+}
+input[type=number]::-webkit-inner-spin-button, /*Chorme*/
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+.boss{
+    color:red;
 }

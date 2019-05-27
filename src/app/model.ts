@@ -31,8 +31,8 @@ export class TransactionCreatePurchaseOrder {
     const sample: TransactionCreatePurchaseOrder = TransactionCreatePurchaseOrder.empty();
 
     sample.TO = 'lotus';
-    sample.FROM = 'themall';
-    sample.PO_KEY = '002';
+    sample.PRODUCT = 'apple';
+    sample.NUM_PRODUCT = '005';
     sample.VALUE = '250';
 
     return sample;
@@ -40,8 +40,8 @@ export class TransactionCreatePurchaseOrder {
 
   constructor(
     public TO: string,
-    public FROM: string,
-    public PO_KEY: string,
+    public PRODUCT: string,
+    public NUM_PRODUCT: string,
     public VALUE: string,
   ) { }
 }
@@ -58,9 +58,9 @@ export class TransactionCreateInvoice {
     const sample: TransactionCreateInvoice = TransactionCreateInvoice.empty();
 
     sample.TO = 'themall';
-    sample.FROM = 'lotus';
-    sample.INVOICE_KEY = '004';
     sample.PO_KEY = '000';
+    sample.PRODUCT = 'apple';
+    sample.NUM_PRODUCT = '005';
     sample.VALUE = '200';
 
 
@@ -69,42 +69,15 @@ export class TransactionCreateInvoice {
 
   constructor(
     public TO: string,
-    public FROM: string,
-    public INVOICE_KEY: string,
-    public VALUE: string,
     public PO_KEY: string,
+    public PRODUCT: string,
+    public NUM_PRODUCT: string,
+    public VALUE: string,
 
   ) { }
 }
 // ------------------------------------------------- END ---------------------------------------------------------
 
-
-export class TransactionFinanceInvoice {
-  static empty(): TransactionFinanceInvoice {
-    const emptyObj = empty(TransactionFinanceInvoice, 5);
-    return emptyObj;
-  }
-
-  static sampleSubmitSr(): TransactionFinanceInvoice {
-    const sample: TransactionFinanceInvoice = TransactionFinanceInvoice.empty();
-
-    sample.inv_no = '';
-    sample.DATE = todate;
-    sample.inv_tax_seller = '';
-    sample.finance_running_no = '';
-    sample.inv_amount_used = '100';
-
-    return sample;
-  }
-
-  constructor(
-    public inv_no: string,
-    public DATE: string,
-    public inv_tax_seller: string,
-    public finance_running_no: string,
-    public inv_amount_used: string
-  ) { }
-}
 
 //  ---------------------------------------------- Check PO key ------------------------------------------------
 export class InquirePOByKeyFields {
@@ -168,7 +141,6 @@ export class Loanbyinv {
     const sample: Loanbyinv = Loanbyinv.empty();
 
     sample.BANK = 'bank';
-    sample.FROM = 'lotus';
     sample.DOC_LOAN = 'PO';
     sample.KEY = '000';
     sample.LOAN_KEY = '00';
@@ -178,7 +150,6 @@ export class Loanbyinv {
 
   constructor(
     public BANK: string,
-    public FROM: string,
     public DOC_LOAN: string,
     public KEY: string,
     public LOAN_KEY: string,
@@ -258,7 +229,6 @@ export class Acceptendorse {
     const sample: Acceptendorse = Acceptendorse.empty();
 
     sample.BANK = 'bank';
-    sample.FORM = 'lotus';
     sample.DOC_LOAN = 'invoice';
     sample.LOAN_KEY = '00';
 
@@ -268,9 +238,33 @@ export class Acceptendorse {
   constructor(
 
     public BANK: string,
-    public FORM: string,
     public DOC_LOAN: string,
     public LOAN_KEY: string,
+
+  ) { }
+}
+// ------------------------------------------------- END ---------------------------------------------------------
+
+// ----------------------------------------- REJECT ---------------------------------------------------------
+export class Reject {
+  static empty(): Reject {
+    const emptyObj = empty(Reject, 2);
+    return emptyObj;
+  }
+
+  static sampleSubmitSr(): Reject {
+    const sample: Reject = Reject.empty();
+
+    sample.TYPE = 'invoice';
+    sample.KEY = '123';
+
+    return sample;
+  }
+
+  constructor(
+
+    public TYPE: string,
+    public KEY: string,
 
   ) { }
 }

@@ -1,42 +1,44 @@
 import { Component, OnInit } from '@angular/core';
-import { TransactionFinanceInvoice } from '.././model';
+import { Reject } from '.././model';
 import { PROCURETOPAYService } from '../service/procuretopay.service';
-import { Util } from '../../util/util';
-@Component({
-  selector: 'app-finance',
-  templateUrl: './finance.component.html',
-  styleUrls: ['./finance.component.css']
-})
-export class FinanceComponent implements OnInit {
-  model: TransactionFinanceInvoice = TransactionFinanceInvoice.empty();
-  public loading = false;
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import {Util} from '../../util/util'
 
+@Component({
+  selector: 'app-reject',
+  templateUrl: './reject.component.html',
+  styleUrls: ['./reject.component.css']
+})
+export class RejectComponent implements OnInit {
+  model: Reject = Reject.empty();
+  public loading = false;
+  modalRef: BsModalRef;
+  bsModalRef: BsModalRef;
+  message: string;
   constructor(
     private svc: PROCURETOPAYService,
-    // private _router: Router
+    private modalService: BsModalService,
   ) { }
 
   ngOnInit() {
     var that = this;
-        // setTimeout(function(){
-            that.model = TransactionFinanceInvoice.sampleSubmitSr();
+    // setTimeout(function(){
+        that.model = Reject.sampleSubmitSr();
   }
 
-  onSubmit() {
-    this.model.inv_no=this.model.inv_no.trim();
-    this.model.DATE=this.model.DATE.trim();
-    this.model.inv_tax_seller=this.model.inv_tax_seller.trim();
-    this.model.inv_amount_used=this.model.inv_amount_used.trim();
-    this.model.finance_running_no=this.model.finance_running_no.trim();
-    
-    let FINno = Util.pad(Number(this.model.finance_running_no));
-    this.model.finance_running_no = FINno ;
-    console.log('uilog save');
+  openModal(template: Reject) {
+    this.modalRef = this.modalService.show(template, { class: 'modal-sm' });
+  }
+  confirm(): void {
+    this.model.TYPE=this.model.TYPE.trim();
+    this.model.KEY = Util.pad(Number(this.model.KEY));
+   
+    console.log('Reject DATA');
     console.log('saving draft ' + JSON.stringify(this.model));
     this.loading = true;
-    this.svc.submitFinanceInvoice(this.model)
+    this.svc.Reject(this.model)
             .subscribe(
-              sr => {
+              sr =>{ 
                 this.loading = false;
                 let message = 'Success';
                 (<HTMLInputElement>document.getElementById('status')).value = message;
@@ -45,7 +47,7 @@ export class FinanceComponent implements OnInit {
                  
               },
               error => {
-                this.loading = false;
+                  this.loading = false;
                   let header = 'Error';
                   let message = error;
                   (<HTMLInputElement>document.getElementById('status')).value = message;
@@ -53,5 +55,12 @@ export class FinanceComponent implements OnInit {
                   document.getElementById("statusfield").style.display = "block";
                   
               });
+    this.message = 'Reject Confirm!';
+    this.modalRef.hide();
+  }
+
+  decline(): void {
+    this.message = 'Declined!';
+    this.modalRef.hide();
   }
 }

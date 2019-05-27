@@ -34,7 +34,6 @@ export class LoanbyinvComponent implements OnInit {
 
   confirm(): void {
     this.model.BANK=this.model.BANK.trim();
-    this.model.FROM=this.model.FROM.trim();
     this.model.DOC_LOAN=this.model.DOC_LOAN.trim();
     this.model.KEY = Util.pad(Number(this.model.KEY));
     this.model.LOAN_KEY = Util.pad(Number(this.model.LOAN_KEY));

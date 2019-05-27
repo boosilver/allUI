@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 
 import { Http, Headers, Request, RequestMethod, Response, ResponseContentType } from '@angular/http';
-import { TransactionCreateInvoice, TransactionEndorseInvoice, TransactionFinanceInvoice, InquireInvoiceByKeyFields } from '../model';
+import { TransactionCreateInvoice, TransactionEndorseInvoice, InquireInvoiceByKeyFields } from '../model';
 
 @Injectable()
 export class IDFProxyService {
@@ -55,17 +55,7 @@ export class IDFProxyService {
     })
       .catch(this.handleError);
   }
-  submitFinanceInvoice(model: TransactionFinanceInvoice): Observable<any> {
-    const url = environment.backendBaseUrl + 'idf/proxy/Invoice/Finance'; // transaction.submit.service.request
-    let headers = new Headers();
-    this.createAuthorizationHeader(headers);
-    return this.http.post(url, model, {
-      headers: headers
-    }).map((res: Response) => {
-      return res.json();
-    })
-      .catch(this.handleError);
-  }
+  
 
 
   InquireInvoiceByKeyFields(id: any): Observable<any> {

@@ -9,8 +9,8 @@ import { environment } from '../../environments/environment';
 import { Http, Headers, Request, RequestMethod, Response, ResponseContentType } from '@angular/http';
 import {
   TransactionCreateInvoice, TransactionEndorseInvoice,
-  TransactionFinanceInvoice, TransactionCreatePurchaseOrder,
-  InquireInvoiceByKeyFields, InquirePOByKeyFields, Loanbyinv, Reqverinv, Acceptendorse
+  TransactionCreatePurchaseOrder,
+  InquireInvoiceByKeyFields, InquirePOByKeyFields, Loanbyinv, Reqverinv, Acceptendorse,Reject
 } from '../model';
 
 @Injectable()
@@ -120,17 +120,6 @@ export class PROCURETOPAYService {
   }
   //  ----------------------------------- ------------------ --------------------------------------------------------
 
-  submitFinanceInvoice(model: TransactionFinanceInvoice): Observable<any> {
-    const url = environment.backendBaseUrl + 'idf/Invoice/Finance'; // transaction.submit.service.request
-    let headers = new Headers();
-    this.createAuthorizationHeader(headers);
-    return this.http.post(url, model, {
-      headers: headers
-    }).map((res: Response) => {
-      return res.json();
-    })
-      .catch(this.handleError);
-  }
 
   // --------------------------------------------- Check Invoice key -----------------------------------------------------------
   InquireInvoiceByKeyFields(model: InquireInvoiceByKeyFields): Observable<any> {
@@ -148,10 +137,26 @@ export class PROCURETOPAYService {
   // -------------------------------------------------- End key -----------------------------------------------------------
 
 
-  // --------------------------------------------- Check PO key -----------------------------------------------------------
+  // --------------------------------------------- Check Data key -----------------------------------------------------------
   InquirePOByKeyFields(model: InquirePOByKeyFields): Observable<any> {
-    const url = environment.backendseller + 'GetPO';//asset.service.request
-    let headers = new Headers();
+    const url = environment.backendbuyer + 'Get';//asset.service.request
+    let headers = new Headers();      //http://localhost:7003/api/v1/Get
+    this.createAuthorizationHeader(headers);
+    return this.http.post(url, model, {
+      headers: headers
+    }).map((res: Response) => {
+      return res.json();
+      // return res.json()[0];
+    })
+      .catch(this.handleError);
+  }
+  // -------------------------------------------------- End key -----------------------------------------------------------
+
+  
+  // --------------------------------------------- Reject -----------------------------------------------------------
+  Reject(model: Reject): Observable<any> {
+    const url = environment.backendbuyer + 'Reject';//asset.service.request
+    let headers = new Headers();      // http://localhost:7003/api/v1/Get
     this.createAuthorizationHeader(headers);
     return this.http.post(url, model, {
       headers: headers

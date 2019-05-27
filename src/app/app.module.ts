@@ -19,14 +19,13 @@ import { IDFProxyService } from './service/idf.Proxy.service';
 import { AppComponent } from './app.component';
 import { InvoiceComponent } from './invoice/invoice.component';
 import { EndorseComponent } from './endorse/endorse.component';
-import { FinanceComponent } from './finance/finance.component';
 import { IndexComponent } from './index/index.component';
 import { PurchaseOrderComponent } from './purchase-order/purchase-order.component';
 import { CheckpoComponent } from './checkpo/checkpo.component';
-import { UserdataComponent } from './userdata/userdata.component';
 import { LoanbyinvComponent } from './loanbyinv/loanbyinv.component';
 import { ReqverinvComponent } from './reqverinv/reqverinv.component';
 import { AcceptComponent } from './accept/accept.component';
+import { RejectComponent } from './reject/reject.component';
 
 //------- End Component ----------
 
@@ -35,14 +34,13 @@ import { AcceptComponent } from './accept/accept.component';
     AppComponent,
     InvoiceComponent,
     EndorseComponent,
-    FinanceComponent,
     IndexComponent,
     CheckpoComponent,
     PurchaseOrderComponent,
-    UserdataComponent,
     LoanbyinvComponent,
     ReqverinvComponent,
     AcceptComponent,
+    RejectComponent,
    
     
 

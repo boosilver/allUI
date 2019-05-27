@@ -15,15 +15,15 @@
 
       <div class="row">
         <div class="field-label col-md-6 mx-auto">
-          <label for="FROM" class="text-muted">FROM</label>
-          <input type="text" class="form-control border-bottom" required [(ngModel)]="model.FROM" id="FROM" name="FROM">
+          <label for="PRODUCT" class="text-muted">PRODUCT</label>
+          <input type="text" class="form-control border-bottom" required [(ngModel)]="model.PRODUCT" id="PRODUCT" name="PRODUCT">
         </div>
       </div>
 
       <div class="row">
         <div class="field-label col-md-6 mx-auto">
-          <label for="PO_KEY" class="text-muted">PURCHASE ORDER KEY</label>
-          <input type="number" class="form-control " [(ngModel)]="model.PO_KEY" id="PO_KEY" name="PO_KEY" required>
+          <label for="NUM_PRODUCT" class="text-muted">NUMBER OF PRODUCT</label>
+          <input type="number" class="form-control " [(ngModel)]="model.NUM_PRODUCT" id="NUM_PRODUCT" name="NUM_PRODUCT" required>
         </div>
       </div>
 
@@ -61,8 +61,8 @@
         <div class="modal-body text-center">
       <pre class="card card-block card-header">
         <p>TO :{{this.model.TO}}</p>
-        <p>FROM :{{this.model.FROM}}</p>
-        <p>PURCHASE ORDER ID :{{this.model.PO_KEY}}</p>
+        <p>PRODUCT :{{this.model.PRODUCT}}</p>
+        <p>NUMBER OF PRODUCT :{{this.model.NUM_PRODUCT}}</p>
         <p>VALUE :{{this.model.VALUE}}</p>
       </pre>
           <p>Do you want to confirm?</p>

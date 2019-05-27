@@ -34,10 +34,10 @@ export class PurchaseOrderComponent implements OnInit {
 
   confirm(): void {
     this.model.TO = this.model.TO.trim();
-    this.model.FROM = this.model.FROM.trim();
+    this.model.PRODUCT = this.model.PRODUCT.trim();
     // this.model.VALUE = this.model.VALUE.trim();
     // this.model.PO_KEY = this.model.PO_KEY.trim(); เป็น number ไม่ต้องใช้ trim
-    this.model.PO_KEY = Util.pad(Number(this.model.PO_KEY));
+    this.model.NUM_PRODUCT = Util.pad(Number(this.model.NUM_PRODUCT));
     this.model.VALUE = Util.pad(Number(this.model.VALUE));
 
     console.log('PO DATA');
