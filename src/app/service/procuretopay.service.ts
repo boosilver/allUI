@@ -38,8 +38,8 @@ export class PROCURETOPAYService {
 
   //  ----------------------------------- Submit Create PO --------------------------------------------------------
   submitCreatePurchaseOrder(model: TransactionCreatePurchaseOrder): Observable<any> {
-    const url = environment.backendbuyer + 'CreatePO'; // transaction.submit.service.request 
-    let headers = new Headers();      //http://localhost:7003/api/v1/CreatePO
+    const url = environment.backendlotus + 'CreatePO'; // transaction.submit.service.request 
+    let headers = new Headers();      //http://localhost:7002/api/v1/CreatePO
     this.createAuthorizationHeader(headers);
     return this.http.post(url, model, {
       headers: headers
@@ -52,7 +52,7 @@ export class PROCURETOPAYService {
 
   //  ----------------------------------- Submit Create INVOICE --------------------------------------------------------
   submitCreateInvoice(model: TransactionCreateInvoice): Observable<any> {
-    const url = environment.backendseller + 'CreateInvoice'; // transaction.submit.service.request
+    const url = environment.backendlotus + 'CreateInvoice'; // transaction.submit.service.request
     let headers = new Headers();        // http://localhost:7002/api/v1/CreateInvoice
     this.createAuthorizationHeader(headers);
     return this.http.post(url, model, {
@@ -66,36 +66,8 @@ export class PROCURETOPAYService {
 
   //  ----------------------------------- Submit Loan by INVOICE --------------------------------------------------------
   submitLoanbyInvoice(model: Loanbyinv): Observable<any> {
-    const url = environment.backendbuyer + 'Loan'; // transaction.submit.service.request
-    let headers = new Headers();        // http://localhost:7003/api/v1/Loan
-    this.createAuthorizationHeader(headers);
-    return this.http.post(url, model, {
-      headers: headers
-    }).map((res: Response) => {
-      return res.json();
-    })
-      .catch(this.handleError);
-  }
-  //  ----------------------------------- ------------------ --------------------------------------------------------
-
-  //  ----------------------------------- Submit Requset verify invoice --------------------------------------------------------
-  submitReqverinv(model: Reqverinv): Observable<any> {
-    const url = environment.backendbank + 'Request_Verify_Invoice'; // transaction.submit.service.request
-    let headers = new Headers();        // http://localhost:7004/api/v1/Request_Verify
-    this.createAuthorizationHeader(headers);
-    return this.http.post(url, model, {
-      headers: headers
-    }).map((res: Response) => {
-      return res.json();
-    })
-      .catch(this.handleError);
-  }
-  //  ----------------------------------- ------------------ --------------------------------------------------------
-
-  //  ----------------------------------- Submit Endorse --------------------------------------------------------
-  submitEndorseInvoice(model: TransactionEndorseInvoice): Observable<any> {
-    const url = environment.backendbank + 'endorse_loan'; // transaction.submit.service.request
-    let headers = new Headers();       //http://localhost:7004/api/v1/endorse_loan
+    const url = environment.backendlotus + 'Loan'; // transaction.submit.service.request
+    let headers = new Headers();        // http://localhost:7002/api/v1/Loan
     this.createAuthorizationHeader(headers);
     return this.http.post(url, model, {
       headers: headers
@@ -108,8 +80,8 @@ export class PROCURETOPAYService {
 
   //  ----------------------------------- Accept Endorse --------------------------------------------------------
   submitAcceptendorse(model: Acceptendorse): Observable<any> {
-    const url = environment.backendbuyer + 'Accept'; // transaction.submit.service.request
-    let headers = new Headers();       //http://localhost:7003/api/v1/Accept
+    const url = environment.backendlotus + 'Accept'; // transaction.submit.service.request
+    let headers = new Headers();       //http://localhost:7002/api/v1/Accept
     this.createAuthorizationHeader(headers);
     return this.http.post(url, model, {
       headers: headers
@@ -139,8 +111,8 @@ export class PROCURETOPAYService {
 
   // --------------------------------------------- Check Data key -----------------------------------------------------------
   InquirePOByKeyFields(model: InquirePOByKeyFields): Observable<any> {
-    const url = environment.backendbuyer + 'Get';//asset.service.request
-    let headers = new Headers();      //http://localhost:7003/api/v1/Get
+    const url = environment.backendlotus + 'Get';//asset.service.request
+    let headers = new Headers();      //http://localhost:7002/api/v1/Get
     this.createAuthorizationHeader(headers);
     return this.http.post(url, model, {
       headers: headers
@@ -155,8 +127,8 @@ export class PROCURETOPAYService {
   
   // --------------------------------------------- Reject -----------------------------------------------------------
   Reject(model: Reject): Observable<any> {
-    const url = environment.backendbuyer + 'Reject';//asset.service.request
-    let headers = new Headers();      // http://localhost:7003/api/v1/Get
+    const url = environment.backendlotus + 'Reject';//asset.service.request
+    let headers = new Headers();      // http://localhost:7002/api/v1/Get
     this.createAuthorizationHeader(headers);
     return this.http.post(url, model, {
       headers: headers

@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   backendBaseUrl: 'http://localhost:7001/api/v1/',
-  backendseller: 'http://localhost:7002/api/v1/',
+  backendlotus: 'http://localhost:7002/api/v1/',
   backendbuyer: 'http://localhost:7003/api/v1/',
   backendbank: 'http://localhost:7004/api/v1/',
 
